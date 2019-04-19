@@ -34,7 +34,7 @@ export default {
                 loop: false,
                 pagination: {
                     el: '.swiper-pagination',
-                    dynamicBullets: true
+                    // dynamicBullets: true
                 },
                 mousewheel: {
                     eventsTarged: '.swiper-container'
