@@ -1,6 +1,11 @@
 <template>
   <div id="home-swiper">
-    <swiper class="swiper-container" :options="swiperOption" ref="homeSwiper">
+    <swiper
+      class="swiper-container"
+      @slideChange="swiperState"
+      :options="swiperOption"
+      ref="homeSwiper"
+    >
       <swiper-slide class="swiper-slide" v-for="(item,index) in swiperSlide" :key="index">
         <img :src="item">
       </swiper-slide>
@@ -41,14 +46,14 @@ export default {
         },
         mousewheel: {
           eventsTarged: ".swiper-container"
-        },
-        on: {
-          slideChange: function() {
-            // alert(this.activeIndex != 0 ? "q" : "w");
-          }
         }
       }
     };
+  },
+  methods: {
+    swiperState: function() {
+      this.$emit("swiperTop", "a");
+    }
   },
   computed: {
     // swiper() {

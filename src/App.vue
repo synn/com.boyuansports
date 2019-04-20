@@ -1,29 +1,50 @@
 <template>
   <div id="app">
-    <Index/>
+    <NavBar @swiperTop="navHidden($event)" v-show="!navShow" id="navbar"/>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Index from './views/Index.vue'
+import NavBar from "./components/NavBar.vue";
+// import News from "./views/News.vue";
 
 export default {
-  name: 'app',
+  name: "app",
+  data() {
+    return {
+      navShow: false
+    };
+  },
+  methods: {
+    navHidden: function(asd) {
+      alert(asd);
+      // this.navShow = e;
+    }
+  },
   components: {
-    Index
+    NavBar
+    // News
   }
-}
+};
 </script>
 
-<style>
+<style lang="less">
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  #navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+  }
 }
 </style>

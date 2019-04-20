@@ -1,28 +1,34 @@
 <template>
-  <div id="navbar" @mouseover="mouseTip == true" @mouseleave="mouseTip == false">
+  <div id="navbar" @mouseover="mouseTip = true" @mouseleave="mouseTip = false">
     <div id="logo">
       <img src="./static/logoCW.svg">
     </div>
     <div id="spacing"></div>
-    <ul v-if="mouseTip">
-      <li>首页</li>
-      <li>新闻</li>
-      <li>联系</li>
-      <li>关于</li>
-    </ul>
-    <ul v-else>
-      <li>
-        <font-awesome-icon :icon="['fas', 'home']" size="lg"/>
-      </li>
-      <li>
-        <font-awesome-icon :icon="['fas', 'feather']" size="lg"/>
-      </li>
-      <li>
-        <font-awesome-icon :icon="['fas', 'comments']" size="lg"/>
-      </li>
-      <li>
-        <font-awesome-icon :icon="['fas', 'seedling']" size="lg"/>
-      </li>
+    <ul>
+      <router-link to="/">
+        <li>
+          <span v-if="mouseTip">首页</span>
+          <font-awesome-icon :icon="['fas', 'home']" size="lg" v-else/>
+        </li>
+      </router-link>
+      <router-link to="/news">
+        <li>
+          <span v-if="mouseTip">新闻</span>
+          <font-awesome-icon :icon="['fas', 'feather']" size="lg" v-else/>
+        </li>
+      </router-link>
+      <router-link to="/contact">
+        <li>
+          <span v-if="mouseTip">联系</span>
+          <font-awesome-icon :icon="['fas', 'comments']" size="lg" v-else/>
+        </li>
+      </router-link>
+      <router-link to="/about">
+        <li>
+          <span v-if="mouseTip">关于</span>
+          <font-awesome-icon :icon="['fas', 'seedling']" size="lg" v-else/>
+        </li>
+      </router-link>
     </ul>
   </div>
 </template>
@@ -76,12 +82,17 @@ export default {
       cursor: pointer;
     }
 
-    li {
-      min-width: 60px;
-      text-align: center;
-      line-height: 60px;
+    a {
       flex-grow: 1;
-      align-items: center;
+      color: white;
+      text-decoration: none;
+
+      li {
+        min-width: 60px;
+        text-align: center;
+        line-height: 60px;
+        align-items: center;
+      }
     }
   }
 }
