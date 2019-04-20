@@ -44,7 +44,7 @@ export default {
         },
         on: {
           slideChange: function() {
-            alert(this.activeIndex != 0 ? "q" : "w");
+            // alert(this.activeIndex != 0 ? "q" : "w");
           }
         }
       }
