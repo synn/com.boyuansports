@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <NavBar @swiperTop="navHidden($event)" v-show="!navShow" id="navbar"/>
-    <router-view/>
+    <NavBar v-show="navShow" id="navbar"/>
+    <router-view @swiperTop="navHidden($event)"/>
   </div>
 </template>
 
@@ -17,9 +17,8 @@ export default {
     };
   },
   methods: {
-    navHidden: function(asd) {
-      alert(asd);
-      // this.navShow = e;
+    navHidden: function(e) {
+      this.navShow = e;
     }
   },
   components: {
