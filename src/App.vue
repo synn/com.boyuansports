@@ -13,7 +13,7 @@ export default {
   name: "app",
   data() {
     return {
-      navShow: false
+      navShow: true
     };
   },
   methods: {
