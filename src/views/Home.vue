@@ -14,7 +14,27 @@
           <p id="detail">{{ item.detail }}</p>
         </div>
       </swiper-slide>
-      <swiper-slide></swiper-slide>
+      <swiper-slide class="swiper-slide-contact">
+        <div id="contact-frame">
+          <div id="logo-show">
+            <img src="../components/static/logoCC.svg">
+          </div>
+          <div id="contact-show">
+            <img src="../components/static/qq.svg">
+            <img class src="../components/static/qq_code.svg" v-show="true">
+            <img src="../components/static/wechat.svg">
+            <img class src="../components/static/qq_code.svg" v-show="true">
+            <img src="../components/static/weibo.svg">
+            <img class src="../components/static/qq_code.svg" v-show="true">
+          </div>
+        </div>
+        <p>
+          <font-awesome-icon :icon="['fas', 'phone']" size="lg"/>&nbsp;18518769253
+        </p>
+        <p>
+          <font-awesome-icon :icon="['fas', 'envelope-open-text']" size="lg"/>&nbsp;i@synn.me
+        </p>
+      </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
   </div>
@@ -142,6 +162,62 @@ export default {
         p {
           text-align: center;
         }
+      }
+    }
+
+    .swiper-slide-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      #contact-frame {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-direction: row;
+        width: 100%;
+        padding: 0 20%;
+        margin-bottom: 60px;
+
+        @media screen and (max-width: 600px) {
+          padding: 0;
+        }
+
+        #logo-show {
+          justify-content: center;
+          flex-grow: 1;
+          text-align: center;
+
+          img {
+            width: 300px;
+            padding: 10px;
+          }
+        }
+
+        #contact-show {
+          display: flex;
+          justify-content: center;
+          flex-grow: 1;
+          text-align: center;
+          flex-direction: row;
+          align-items: center;
+          min-width: 300px;
+
+          img {
+            width: 60px;
+            padding: 10px;
+          }
+        }
+      }
+
+      p {
+        text-shadow: none;
+        font-weight: bold;
+        color: #25c179;
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
       }
     }
   }
