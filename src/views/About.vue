@@ -5,6 +5,11 @@
 <script>
 export default {
   name: "about",
+  data() {
+    return {
+      a: "b"
+    };
+  },
   components: {}
 };
 </script>

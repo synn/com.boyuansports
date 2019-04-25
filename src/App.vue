@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <NavBar v-show="navShow" id="navbar"/>
+    <NavBar v-show="navShow" id="navbar" @gotoContact="changeSlide($event)"/>
     <router-view @swiperTop="navHidden($event)"/>
   </div>
 </template>
@@ -19,6 +19,11 @@ export default {
   methods: {
     navHidden: function(e) {
       this.navShow = e;
+    },
+    changeSlide: function(e) {
+      if (this.$children[1].swiper) {
+        this.$children[1].swiper.slideTo(e, 1000, false);
+      }
     }
   },
   components: {

@@ -6,25 +6,25 @@
       </div>
       <div id="spacing"></div>
       <ul>
-        <router-link to="/">
-          <li>
+        <router-link :to="{ name: 'home', params: { goto: 'top' }}">
+          <li id="contact-icon" @click="contactClick(0)">
             <span v-if="mouseTip">首页</span>
             <font-awesome-icon :icon="['fas', 'home']" size="lg" v-else/>
           </li>
         </router-link>
-        <router-link to="/news">
+        <router-link :to="{ name: 'blog' }">
           <li>
-            <span v-if="mouseTip">新闻</span>
+            <span v-if="mouseTip">博客</span>
             <font-awesome-icon :icon="['fas', 'feather']" size="lg" v-else/>
           </li>
         </router-link>
-        <router-link to="/contact">
-          <li>
+        <router-link :to="{ name: 'home', params: { goto: 'contact' }}">
+          <li id="contact-icon" @click="contactClick(5)">
             <span v-if="mouseTip">联系</span>
             <font-awesome-icon :icon="['fas', 'comments']" size="lg" v-else/>
           </li>
         </router-link>
-        <router-link to="/about">
+        <router-link :to="{ name: 'about', params: { goto: 'about' }}">
           <li>
             <span v-if="mouseTip">关于</span>
             <font-awesome-icon :icon="['fas', 'seedling']" size="lg" v-else/>
@@ -42,6 +42,11 @@ export default {
     return {
       mouseTip: false
     };
+  },
+  methods: {
+    contactClick: function(e) {
+      this.$emit("gotoContact", e);
+    }
   }
 };
 </script>
@@ -91,6 +96,16 @@ export default {
 
     &:hover {
       cursor: pointer;
+    }
+
+    #contact-icon {
+      flex-grow: 1;
+      color: white;
+      text-decoration: none;
+      min-width: 60px;
+      text-align: center;
+      line-height: 60px;
+      align-items: center;
     }
 
     a {
