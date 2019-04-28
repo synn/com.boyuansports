@@ -6,30 +6,30 @@
       </div>
       <div id="spacing"></div>
       <ul>
-        <router-link :to="{ name: 'home', params: { goto: 'top' }}">
-          <li id="contact-icon" @click="contactClick(0)">
+        <li @click="contactClick(0)">
+          <router-link :to="{ name: 'home', params: { goto: 'top' }}">
             <span v-if="mouseTip">首页</span>
             <font-awesome-icon :icon="['fas', 'home']" size="lg" v-else/>
-          </li>
-        </router-link>
-        <router-link :to="{ name: 'blog' }">
-          <li>
+          </router-link>
+        </li>
+        <li>
+          <a target="_blank" href="http://blog.boyuansports.com">
             <span v-if="mouseTip">博客</span>
             <font-awesome-icon :icon="['fas', 'feather']" size="lg" v-else/>
-          </li>
-        </router-link>
-        <router-link :to="{ name: 'home', params: { goto: 'contact' }}">
-          <li id="contact-icon" @click="contactClick(5)">
+          </a>
+        </li>
+        <li @click="contactClick(5)">
+          <router-link :to="{ name: 'home', params: { goto: 'contact' }}">
             <span v-if="mouseTip">联系</span>
             <font-awesome-icon :icon="['fas', 'comments']" size="lg" v-else/>
-          </li>
-        </router-link>
-        <router-link :to="{ name: 'about', params: { goto: 'about' }}">
-          <li>
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'about', params: { goto: 'about' }}">
             <span v-if="mouseTip">关于</span>
             <font-awesome-icon :icon="['fas', 'seedling']" size="lg" v-else/>
-          </li>
-        </router-link>
+          </router-link>
+        </li>
       </ul>
     </div>
   </transition>
@@ -98,26 +98,15 @@ export default {
       cursor: pointer;
     }
 
-    #contact-icon {
-      flex-grow: 1;
-      color: white;
-      text-decoration: none;
+    li {
       min-width: 60px;
-      text-align: center;
-      line-height: 60px;
-      align-items: center;
-    }
-
-    a {
       flex-grow: 1;
-      color: white;
-      text-decoration: none;
+      text-align: center;
 
-      li {
-        min-width: 60px;
-        text-align: center;
+      a {
+        text-decoration: none;
+        color: white;
         line-height: 60px;
-        align-items: center;
       }
     }
   }
