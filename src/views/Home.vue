@@ -16,45 +16,10 @@
       </swiper-slide>
       <swiper-slide class="swiper-slide-contact">
         <div id="contact-frame">
-          <div id="logo-show">
-            <img src="../components/static/logoCC.svg">
-          </div>
-          <div id="contact-show">
-            <div id="qq-icon" @mouseover="codeShow.qq=true" @mouseleave="codeShow.qq=false">
-              <img class="icon-item" src="../components/static/qq.svg" v-show="!codeShow.qq">
-              <img
-                class="icon-item-code"
-                src="../components/static/qq_code.svg"
-                v-show="codeShow.qq"
-              >
-            </div>
-            <div
-              id="wechat-icon"
-              @mouseover="codeShow.wechat=true"
-              @mouseleave="codeShow.wechat=false"
-            >
-              <img
-                class="icon-item"
-                src="../components/static/wechat.svg"
-                v-show="!codeShow.wechat"
-              >
-              <img
-                class="icon-item-code"
-                src="../components/static/qq_code.svg"
-                v-show="codeShow.wechat"
-              >
-            </div>
-            <div
-              id="weibo-icon"
-              @mouseover="codeShow.weibo=true"
-              @mouseleave="codeShow.weibo=false"
-            >
-              <img class="icon-item" src="../components/static/weibo.svg" v-show="!codeShow.weibo">
-              <img
-                class="icon-item-code"
-                src="../components/static/qq_code.svg"
-                v-show="codeShow.weibo"
-              >
+          <div id="contact-frame">
+            <div v-for="i in QR" :key="i.name" @mouseover="i.show=true" @mouseleave="i.show=false">
+              <img class="icon-item" :src="i.icon" v-show="!i.show">
+              <img class="icon-item-code" :src="i.code" v-show="i.show">
             </div>
           </div>
           <div id="code-show"></div>
@@ -85,44 +50,59 @@ export default {
   },
   data() {
     return {
-      codeShow: {
-        qq: false,
-        wechat: false,
-        weibo: false
-      },
+      QR: [
+        {
+          name: "qq",
+          show: false,
+          icon: "http://images.boyuansports.com/qq_icon.svg",
+          code: "http://images.boyuansports.com/qq_code.svg"
+        },
+        {
+          name: "wechat",
+          show: false,
+          icon: "http://images.boyuansports.com/wechat_icon.svg",
+          code: "http://images.boyuansports.com/wechat_code.svg"
+        },
+        {
+          name: "weibo",
+          show: false,
+          icon: "http://images.boyuansports.com/weibo_icon.svg",
+          code: "http://images.boyuansports.com/weibo_code.svg"
+        }
+      ],
       swiperSlide: [
         {
           title: "专业",
           eng: "Professional",
-          image: "http://ppqmgxfzn.bkt.clouddn.com/pages-01.jpg",
+          image: "http://images.boyuansports.com/pages-01.jpg",
           detail:
             "那时我们有梦， 关于文学， 关于爱情， 关于穿越世界的旅行。 如今我们深夜饮酒， 杯子碰到一起， 都是梦破碎的声音。"
         },
         {
           title: "专业",
           eng: "Professional",
-          image: "http://ppqmgxfzn.bkt.clouddn.com/pages-02.jpg",
+          image: "http://images.boyuansports.com/pages-02.jpg",
           detail:
             "那时我们有梦， 关于文学， 关于爱情， 关于穿越世界的旅行。 如今我们深夜饮酒， 杯子碰到一起， 都是梦破碎的声音。"
         },
         {
           title: "专业",
           eng: "Professional",
-          image: "http://ppqmgxfzn.bkt.clouddn.com/pages-03.jpg",
+          image: "http://images.boyuansports.com/pages-03.jpg",
           detail:
             "那时我们有梦， 关于文学， 关于爱情， 关于穿越世界的旅行。 如今我们深夜饮酒， 杯子碰到一起， 都是梦破碎的声音。"
         },
         {
           title: "专业",
           eng: "Professional",
-          image: "http://ppqmgxfzn.bkt.clouddn.com/pages-04.jpg",
+          image: "http://images.boyuansports.com/pages-04.jpg",
           detail:
             "那时我们有梦， 关于文学， 关于爱情， 关于穿越世界的旅行。 如今我们深夜饮酒， 杯子碰到一起， 都是梦破碎的声音。"
         },
         {
           title: "专业",
           eng: "Professional",
-          image: "http://ppqmgxfzn.bkt.clouddn.com/pages-05.jpg",
+          image: "http://images.boyuansports.com/pages-05.jpg",
           detail:
             "那时我们有梦， 关于文学， 关于爱情， 关于穿越世界的旅行。 如今我们深夜饮酒， 杯子碰到一起， 都是梦破碎的声音。"
         }
@@ -230,18 +210,18 @@ export default {
           padding: 0;
         }
 
-        #logo-show {
-          justify-content: center;
-          flex-grow: 1;
-          text-align: center;
+        // #logo-show {
+        //   justify-content: center;
+        //   flex-grow: 1;
+        //   text-align: center;
 
-          img {
-            width: 300px;
-            padding: 10px;
-          }
-        }
+        //   img {
+        //     width: 300px;
+        //     padding: 10px;
+        //   }
+        // }
 
-        #contact-show {
+        #contact-frame {
           display: flex;
           justify-content: center;
           flex-grow: 1;
@@ -253,13 +233,13 @@ export default {
           div {
             position: relative;
             img {
-              width: 60px;
+              width: 80px;
               padding: 10px;
             }
 
             .icon-item-code {
-              width: 100px;
-              height: 100px;
+              width: 150px;
+              height: 150px;
             }
           }
         }

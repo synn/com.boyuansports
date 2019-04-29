@@ -7,7 +7,6 @@
 
 <script>
 import NavBar from "./components/NavBar.vue";
-// import News from "./views/News.vue";
 
 export default {
   name: "app",
@@ -28,7 +27,6 @@ export default {
   },
   components: {
     NavBar
-    // News
   }
 };
 </script>

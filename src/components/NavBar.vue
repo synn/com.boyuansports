@@ -2,7 +2,7 @@
   <transition name="navbar">
     <div id="navbar" @mouseover="mouseTip = true" @mouseleave="mouseTip = false">
       <div id="logo">
-        <img src="./static/logoCW.svg">
+        <img src="http://images.boyuansports.com/logoCW.svg">
       </div>
       <div id="spacing"></div>
       <ul>
@@ -25,7 +25,13 @@
           </router-link>
         </li>
         <li>
-          <router-link :to="{ name: 'about', params: { goto: 'about' }}">
+          <router-link to="local">
+            <span v-if="mouseTip">位置</span>
+            <font-awesome-icon :icon="['fas', 'map-marked-alt']" size="lg" v-else/>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="about">
             <span v-if="mouseTip">关于</span>
             <font-awesome-icon :icon="['fas', 'seedling']" size="lg" v-else/>
           </router-link>
@@ -94,12 +100,8 @@ export default {
     list-style: none;
     font-size: 0.8rem;
 
-    &:hover {
-      cursor: pointer;
-    }
-
     li {
-      min-width: 60px;
+      min-width: 50px;
       flex-grow: 1;
       text-align: center;
 
@@ -107,6 +109,10 @@ export default {
         text-decoration: none;
         color: white;
         line-height: 60px;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
