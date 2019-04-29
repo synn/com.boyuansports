@@ -28,6 +28,7 @@ export default {
     text-align: center;
     font-size: 3rem;
     line-height: 100px;
+    letter-spacing: 1.5rem;
 
     span:first-child {
       color: #f6ce00;
