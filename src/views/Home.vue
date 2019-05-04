@@ -2,8 +2,8 @@
   <div id="home">
     <swiper
       class="swiper-container"
-      @slideChangeTransitionStart="swiperState"
       :options="swiperOption"
+      @transitionEnd="swiperState"
       ref="homeSwiper"
     >
       <swiper-slide class="swiper-slide" v-for="(item,index) in swiperSlide" :key="index">
@@ -26,15 +26,18 @@
         </div>
         <p>
           <font-awesome-icon :icon="['fas', 'phone']" size="lg"/>
-          <span>&nbsp;18518769253</span>
+          <span>&nbsp;0319-5991000</span>
         </p>
         <p>
           <font-awesome-icon :icon="['fas', 'envelope-open-text']" size="lg"/>
-          <span>&nbsp;i@synn.me</span>
+          <span>&nbsp;new@boyuansports.com</span>
         </p>
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
+    <div id="goto-top" @click="switchSlide(0)" v-show="topIcon">
+      <font-awesome-icon :icon="['fas', 'angle-double-up']" size="lg"/>
+    </div>
   </div>
 </template>
 
@@ -70,6 +73,7 @@ export default {
           code: "http://images.boyuansports.com/weibo_code.svg"
         }
       ],
+      topIcon: false,
       swiperSlide: [
         {
           title: "专业",
@@ -111,7 +115,7 @@ export default {
         direction: "vertical",
         loop: false,
         clickable: true,
-        // effect: 'fade',
+        // effect: "fade",
         speed: 1000,
         pagination: {
           el: ".swiper-pagination"
@@ -126,6 +130,9 @@ export default {
   methods: {
     swiperState() {
       this.$emit("swiperTop", this.swiper.activeIndex != 5 ? true : false);
+      this.swiper.activeIndex != 0
+        ? (this.topIcon = true)
+        : (this.topIcon = false);
     },
     pageLoaded() {
       let goto = this.$route.params.goto;
@@ -134,6 +141,9 @@ export default {
       } else if (goto == "contact") {
         this.swiper.slideTo(5, 1000, false);
       }
+    },
+    switchSlide(n) {
+      this.swiper.slideTo(n, 1000, false);
     }
   },
   mounted() {
@@ -260,6 +270,25 @@ export default {
           color: #aaa;
         }
       }
+    }
+  }
+
+  #goto-top {
+    position: fixed;
+    right: 20px;
+    bottom: 50px;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    background: black;
+    opacity: 0.5;
+    color: white;
+
+    :hover {
+      cursor: pointer;
     }
   }
 }

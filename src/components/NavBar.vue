@@ -13,9 +13,9 @@
           </router-link>
         </li>
         <li>
-          <a target="_blank" href="http://blog.boyuansports.com">
-            <span v-if="mouseTip">博客</span>
-            <font-awesome-icon :icon="['fas', 'feather']" size="lg" v-else/>
+          <a target="_blank" href="https://weibo.com/u/7009100292">
+            <span v-if="mouseTip">微博</span>
+            <font-awesome-icon :icon="['fab', 'weibo']" size="lg" v-else/>
           </a>
         </li>
         <li @click="contactClick(5)">
