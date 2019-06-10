@@ -10,14 +10,22 @@ export default new Router({
         {
             path: '/',
             name: 'home',
-            // component: Home
             component: () => import('./views/Home')
         },
         {
             path: '/local',
             name: 'local',
-            // component: Local
             component: () => import('./views/Local')
+        },
+        {
+            path: '/partner',
+            name: 'partner',
+            component: () => import('./views/Partner')
+        },
+        {
+            path: '/royal',
+            name: 'royal',
+            component: () => import('./views/Royal')
         },
         {
             path: '/about',

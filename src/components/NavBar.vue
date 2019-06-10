@@ -1,42 +1,60 @@
 <template>
   <transition name="navbar">
     <div id="navbar" @mouseover="mouseTip = true" @mouseleave="mouseTip = false">
-      <div id="logo">
-        <img src="http://images.boyuansports.com/logoCW.svg">
+      <div id="navbar-warp">
+        <div id="logo">
+          <img src="http://images.boyuansports.com/logoCW.svg">
+        </div>
+        <div class="spacing"></div>
+        <ul>
+          <li>
+            <font-awesome-icon class="menu-item" :icon="['fas', 'home']" size="lg"/>
+            <div @click="contactClick(0)" v-if="mouseTip">
+              <router-link :to="{ name: 'home', params: { goto: 'top' }}">
+                <span>首页</span>
+              </router-link>
+            </div>
+          </li>
+          <li>
+            <font-awesome-icon class="menu-item" :icon="['fab', 'weibo']" size="lg"/>
+            <div v-if="mouseTip">
+              <a target="_blank" href="https://weibo.com/u/7009100292" v-if="mouseTip">
+                <span>微博</span>
+              </a>
+            </div>
+          </li>
+          <li>
+            <font-awesome-icon class="menu-item" :icon="['fas', 'comments']" size="lg"/>
+            <div @click="contactClick(5)" v-if="mouseTip">
+              <router-link :to="{ name: 'home', params: { goto: 'contact' }}">
+                <span>联系</span>
+              </router-link>
+            </div>
+          </li>
+          <li>
+            <font-awesome-icon class="menu-item" :icon="['fas', 'map-marked-alt']" size="lg"/>
+            <div v-if="mouseTip">
+              <router-link to="local">
+                <span>位置</span>
+              </router-link>
+            </div>
+          </li>
+          <li>
+            <font-awesome-icon class="menu-item" :icon="['fas', 'seedling']" size="lg"/>
+            <div v-if="mouseTip">
+              <router-link to="partner">
+                <span>合作伙伴</span>
+              </router-link>
+              <router-link to="royal">
+                <span>企业荣誉</span>
+              </router-link>
+              <router-link to="about">
+                <span>关于</span>
+              </router-link>
+            </div>
+          </li>
+        </ul>
       </div>
-      <div id="spacing"></div>
-      <ul>
-        <li @click="contactClick(0)">
-          <router-link :to="{ name: 'home', params: { goto: 'top' }}">
-            <span v-if="mouseTip">首页</span>
-            <font-awesome-icon :icon="['fas', 'home']" size="lg" v-else/>
-          </router-link>
-        </li>
-        <li>
-          <a target="_blank" href="https://weibo.com/u/7009100292">
-            <span v-if="mouseTip">微博</span>
-            <font-awesome-icon :icon="['fab', 'weibo']" size="lg" v-else/>
-          </a>
-        </li>
-        <li @click="contactClick(5)">
-          <router-link :to="{ name: 'home', params: { goto: 'contact' }}">
-            <span v-if="mouseTip">联系</span>
-            <font-awesome-icon :icon="['fas', 'comments']" size="lg" v-else/>
-          </router-link>
-        </li>
-        <li>
-          <router-link to="local">
-            <span v-if="mouseTip">位置</span>
-            <font-awesome-icon :icon="['fas', 'map-marked-alt']" size="lg" v-else/>
-          </router-link>
-        </li>
-        <li>
-          <router-link to="about">
-            <span v-if="mouseTip">关于</span>
-            <font-awesome-icon :icon="['fas', 'seedling']" size="lg" v-else/>
-          </router-link>
-        </li>
-      </ul>
     </div>
   </transition>
 </template>
@@ -68,50 +86,62 @@ export default {
 }
 
 #navbar {
-  color: white;
-  height: 60px;
-  display: flex;
-  flex-direction: row;
-  background: rgba(0, 0, 0, 0.8);
-
-  #logo {
-    display: flex;
-    flex-grow: 1;
-    flex-shrink: 0;
-    padding: 10px;
-    align-items: center;
-
-    img {
-      height: 40px;
-      flex-grow: 1;
-    }
-  }
-
-  #spacing {
-    display: flex;
-    flex-grow: 5;
-  }
-
-  ul {
+  #navbar-warp {
+    color: white;
+    min-height: 60px;
     display: flex;
     flex-direction: row;
-    flex-grow: 1;
-    flex-shrink: 0;
-    list-style: none;
-    font-size: 0.8rem;
+    background: rgba(0, 0, 0, 0.8);
 
-    li {
-      min-width: 50px;
+    #logo {
+      display: flex;
       flex-grow: 1;
-      text-align: center;
+      flex-shrink: 0;
+      padding: 10px;
+      align-items: center;
 
-      a {
-        text-decoration: none;
-        color: white;
-        line-height: 60px;
+      img {
+        height: 40px;
+        flex-grow: 1;
+      }
+    }
 
-        &:hover {
-          cursor: pointer;
+    .spacing {
+      display: flex;
+      flex-grow: 5;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      flex-grow: 1;
+      flex-shrink: 0;
+      list-style: none;
+      font-size: 0.8rem;
+
+      li {
+        width: 50px;
+        flex-grow: 1;
+        text-align: center;
+
+        .menu-item {
+          height: 60px;
+        }
+
+        div {
+
+          a {
+            display: block;
+            text-align: center;
+            width: 100%;
+            text-decoration: none;
+            color: white;
+            line-height: 1.6rem;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
         }
       }
     }
